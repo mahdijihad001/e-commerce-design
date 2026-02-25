@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 168 70% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 30% 95%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 40 15% 94%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 36 95% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 168 70% 38%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 168 70% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 168 70% 48%;
+
+    --success: 152 60% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 36 95% 55%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 70% 55%;
+    --info-foreground: 0 0% 100%;
+
+    --shadow-soft: 0 2px 15px -3px hsl(220 20% 10% / 0.08), 0 1px 3px -1px hsl(220 20% 10% / 0.04);
+    --shadow-card: 0 4px 25px -5px hsl(220 20% 10% / 0.1), 0 2px 10px -3px hsl(220 20% 10% / 0.06);
+    --shadow-elevated: 0 10px 40px -10px hsl(220 20% 10% / 0.15), 0 4px 15px -5px hsl(220 20% 10% / 0.08);
+
+    --gradient-primary: linear-gradient(135deg, hsl(168 70% 38%), hsl(168 80% 30%));
+    --gradient-hero: linear-gradient(135deg, hsl(168 70% 38%) 0%, hsl(180 60% 45%) 50%, hsl(36 95% 55%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(40 20% 98%) 0%, hsl(40 15% 96%) 100%);
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 220 10% 92%;
+    --card: 220 18% 12%;
+    --card-foreground: 220 10% 92%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 220 10% 92%;
+    --primary: 168 70% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 10% 92%;
+    --muted: 220 15% 16%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 36 95% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 168 70% 48%;
+    --sidebar-background: 220 22% 6%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 168 70% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 220 10% 90%;
+    --sidebar-border: 220 15% 14%;
+    --sidebar-ring: 168 70% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .card-soft {
+    @apply bg-card rounded-xl border border-border;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-soft:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-xl;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .gradient-text {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .badge-status {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-pending {
+    @apply badge-status bg-warning/15 text-warning;
+  }
+
+  .badge-confirmed {
+    @apply badge-status bg-info/15 text-info;
+  }
+
+  .badge-shipped {
+    @apply badge-status bg-primary/15 text-primary;
+  }
+
+  .badge-delivered {
+    @apply badge-status bg-success/15 text-success;
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+}
